@@ -19,11 +19,9 @@ Let's list out the things we've covered in class...
 
 This is SO much stuff. We've pretty much covered the entire stack. Everything we
 cover from here on out is an extension of what we've already learned or a
-different language than we're used to. Today we'll be talking about expressJS
+different language than we're used to. Today we'll be talking about [expressJS](https://expressjs.com/)
 the "e" in the MEAN stack. Which incidentally is super buzz wordy right now.
 
-You've already used express, only the language was ruby and the framework was
-Sinatra. So you haven't actually used express, but you'll see many similarities.
 Express is a framework built on top of node.
 
 > Node.js is not a framework. It is an application runtime environment that
@@ -44,7 +42,7 @@ In the terminal:
 ```bash
 $ mkdir hello-express
 $ cd hello-express
-$ npm init
+$ npm init -y
 $ npm install --save express
 ```
 
@@ -183,7 +181,7 @@ app.get("/:name", function(req, res){
 ## Break(10/60)
 
 ## You do: 99 Bottle of Beer(20/80)
-The readme can be found [here](https://github.com/ga-dc/99_bottles_express)
+The readme can be found [here](https://github.com/ga-wdi-exercises/99_bottles_express)
 
 ## Views (20/100)
 
@@ -455,16 +453,10 @@ And to our view:
 
 :tada:
 
-## You do - Build Something Fun!
-
-Just build a simple express app, that does something fun or interesting. Some
-ideas:
+## You do - Ultimate Compliment
 
 * [Ultimate Compliment](https://github.com/ga-dc/compliment-express)
   * You might want to look at the [Sinatra Version Solution](https://github.com/ga-dc/emergency_compliment/tree/solution)
-* A simple calculator, e.g. GET '/1/plus/4', GET '/4/minus/2'
-* A simple version of tunr (LOL!)
-
 
 ## Sample Quiz Questions
 - What is `npm`?
