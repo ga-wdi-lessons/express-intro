@@ -314,7 +314,7 @@ module.exports = {
 var customModule = require("./aCustomModule.js");
 
 // use variable to call the .sayHello(function) defined in aCustomModule.js
-customModule.sayHello()
+customModule.sayHello
 ```
 
 Well, we can actually separate our concerns using `module.exports` If we change
