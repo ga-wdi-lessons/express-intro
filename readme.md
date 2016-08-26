@@ -32,7 +32,7 @@ Some frameworks, like Rails, are very opinionated frameworks.
 
 Today, we'll be learning about Express, which is much less opinionated. Just
 like Sinatra, we have a lot of freedom in how we structure our application
-(folders/files, how to load different files, managing dependancies, etc)
+(folders/files, how to load different files, managing dependencies, etc)
 
 ## Hello World - Express (we do 30/45)
 
@@ -129,6 +129,7 @@ app.get("/", function(req, res){
   res.send("Hello World");
 });
 ```
+Here, `req` is the HTTP request and `res` is the HTTP response your server sends back.
 
 We refresh and...
 
@@ -187,16 +188,14 @@ The readme can be found [here](https://github.com/ga-wdi-exercises/99_bottles_ex
 
 > One thing to note about views for today. We want to give you an initial
 introduction into how views can be generated through templating to achieve the
-same effects that erb did for us in Sinatra/Rails. However, during the course of
-this week, we won't be using too many server-side rendered views. Instead we'll
-be focusing more of this week on how we render views on the client side.
+same effects that erb did for us in Sinatra/Rails.
 
 Let's leverage our [solution to 99 Bottles of
 Beer](https://github.com/ga-dc/99_bottles_express/tree/solution) to learn about
 views.
 
 Remember how we utilized erb in Sinatra and rails?  We need to be able to do the
-same sort of templating with Express. For express we'll use handlebars. To
+same sort of templating with Express. For express, we'll use handlebars. To
 install handlebars into our node application enter the following in the
 terminal:
 
@@ -267,9 +266,12 @@ The only problem is our view is empty! Let's go ahead and change that now. In
 ```
 
 This is also a great time to note how we serve static assets. Notice we linked a
-stylesheet in our layout file. We are able to do this, because in our `index.js`
-we use `app.use(express.static(__dirname + '/public'))` in our code base. This
-allows us to utilize files in that folder in the layout.
+stylesheet in our layout file.
+
+In our `index.js`, let's also add:  
+ `app.use(express.static(__dirname + '/public'))`
+
+This allows us to utilize files in that folder in the layout.
 
 Notice the `{{{body}}}` syntax. This is because Handlebars by default escapes
 HTML and you need the additional set of brackets to indicate that you want to
@@ -288,7 +290,7 @@ before. In `views/index.hbs`:
 ```
 
 > Like in ERB, we're able to use objects in our view. Additionally we can
-utilize control flow in our view as well!
+utilize control flow in our view as well! The syntax your seeing for the conditional statement is a built-in helper from Handlebars.
 
 ## module.exports (20/120)
 
@@ -307,7 +309,7 @@ module.exports = {
 ```
 
 ```js
-// in app.js
+// in index.js
 // instantiate global variable to grant access to module we've created
 var customModule = require("./aCustomModule.js");
 
@@ -319,10 +321,12 @@ Well, we can actually separate our concerns using `module.exports` If we change
 our get request in `index.js`:
 
 ```js
+var bottles = require("./controllers/bottles.js");
 app.get("/:numberOfBottles?", bottles.index );
 ```
 
-to this instead. We could create a routes module that defines our index route. Let's create a `controllers/bottles.js` file with the following contents:
+to this instead. The `./` refers to the current directory, which must be explicitly stated.
+We could create a routes module that defines our index route. Let's create a `controllers/bottles.js` file with the following contents:
 
 ```js
 module.exports = {
@@ -330,7 +334,7 @@ module.exports = {
     var numberOfBottles = parseInt(req.params.numberOfBottles) || 99;
     var next = numberOfBottles - 1;
     res.render('index',{
-      numberOfBottles: numberOfBottles,
+      bottles: numberOfBottles,
       next: next
     });
   }
@@ -379,7 +383,7 @@ Submit a name:
 Q. How can we fix this?
 ---
 
-> In `app.js`...
+> In `index.js`...
 
 ```js
 app.post("/", function(req, res){
@@ -388,11 +392,11 @@ app.post("/", function(req, res){
 ```
 
 Well it works, but it's not super valuable, we're not even getting our
-parameter. Let's add some stuff in `app.js`:
+parameter. Let's add some stuff in `index.js`:
 
 ```js
 app.post("/", function(req, res){
-  res.send("hello " + req.params.name)
+  res.send("hello " + req.params.player_name)
 })
 ```
 
@@ -401,7 +405,7 @@ It's an empty object!
 
 Our html form information is not in `req.params`. Express is not handling information posted from an html form.  We need to install middleware in order to get form data and JSON data in a POST request for express applications. Rails and Sinatra already include the middleware to handle this(RACK). By default express does not, so we need to install it manually.
 
-> middleware is code that runs in between receiving the request and responding. Body-parser used to be included to express, but they took it out. Why might they do that?
+> middleware is code that runs in between receiving the request and responding. Body-parser used to be included to express, but they took it out.
 
 In the terminal:
 
@@ -409,7 +413,7 @@ In the terminal:
 $ npm install --save body-parser
 ```
 
-In `app.js`:
+In `index.js`:
 
 ```js
 // configure app to use body parser
@@ -422,11 +426,11 @@ app.use(bodyParser.urlencoded({ extended: true })); // handles form submissions
 Another thing to note is that, in express, `params` is always for parameters in
 the url. parameters in form data is `body`
 
-So we change the final post request in app.js to:
+So we change the final post request in index.js to:
 
 ```js
 app.post("/", function(req, res){
-  res.send("hello " + req.body.name)
+  res.send("hello " + req.body.player_name)
 })
 ```
 
