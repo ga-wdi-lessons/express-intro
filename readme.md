@@ -98,7 +98,7 @@ Let's make a new file `$ touch index.js` and place the following contents. In
 var express = require("express");
 var app = express();
 
-app.listen(4000, function(){
+app.listen(4000, () => {
   console.log("app listening on port 4000");
 });
 ```
@@ -116,7 +116,7 @@ try going to the local host of that port number. In the browser enter
 In the browser we'll see something like :
 
 ```
-CANNOT GET /
+cannot GET /
 ```
 
 OH NOES, what's going on here?
@@ -125,7 +125,7 @@ Basically we've told the server what port to listen on, but we didn't specify
 what to do if a user goes to the `"/"` route. Let's update `index.js`:
 
 ```javascript
-app.get("/", function(req, res){
+app.get("/", (req, res) => {
   res.send("Hello World");
 });
 ```
@@ -174,8 +174,8 @@ Remember parameters in our ruby frameworks? It's very similar in JS. Let's
 update `index.js` to include:
 
 ```javascript
-app.get("/:name", function(req, res){
-  res.send("hello " + req.params.name);
+app.get("/:name", (req, res) => {
+  res.send(`hello ${req.params.name}`);
 });
 ```
 
@@ -225,7 +225,7 @@ In `index.js`:
 
 ```javascript
 // instead of
-// app.get("/:numberOfBottles?", function( req, res ){
+// app.get("/:numberOfBottles?", ( req, res ) => {
 //   var numberOfBottles = req.params.numberOfBottles || 99
 //   var next = numberOfBottles - 1
 //   if (numberOfBottles > 1){
@@ -237,10 +237,10 @@ In `index.js`:
 // })
 
 // we want this
-app.get("/:numberOfBottles?", function( req, res ){
-  var numberOfBottles = req.params.numberOfBottles || 99;
-  var next = numberOfBottles - 1;
-  res.render("index", {bottles: numberOfBottles, next: next});
+app.get("/:numberOfBottles?", ( req, res ) => {
+  var bottles = req.params.numberOfBottles || 99;
+  var next = bottles - 1;
+  res.render("index", {bottles, next});
 })
 ```
 
@@ -300,10 +300,10 @@ file.
 
 For example:
 ```js
-// aCustomModule.js
+// calculator.js
 module.exports = {
-  sayHello: function(){
-    console.log("hello world");
+  add(a,b){
+    return a + b
   }
 }
 ```
@@ -311,10 +311,10 @@ module.exports = {
 ```js
 // in index.js
 // instantiate global variable to grant access to module we've created
-var customModule = require("./aCustomModule.js");
+var calculator = require("./calculator.js");
 
-// use variable to call the .sayHello(function) defined in aCustomModule.js
-customModule.sayHello
+// use variable to call the .add() function defined in calculator.js
+calculator.add(3,4)
 ```
 
 Well, we can actually separate our concerns using `module.exports` If we change
@@ -330,12 +330,12 @@ We could create a routes module that defines our index route. Let's create a `co
 
 ```js
 module.exports = {
-  index: function( req, res ){
-    var numberOfBottles = parseInt(req.params.numberOfBottles) || 99;
-    var next = numberOfBottles - 1;
+  index( req, res ){
+    var bottles = parseInt(req.params.numberOfBottles) || 99;
+    var next = bottles - 1;
     res.render('index',{
-      bottles: numberOfBottles,
-      next: next
+      bottles,
+      next
     });
   }
 };
@@ -360,7 +360,7 @@ We need a route and a view (with a form)
 
 
 ```js
-app.get("/", function(req, res){
+app.get("/", (req, res) => {
   res.render("welcome");
 });
 ```
@@ -386,7 +386,7 @@ Q. How can we fix this?
 > In `index.js`...
 
 ```js
-app.post("/", function(req, res){
+app.post("/", (req, res) => {
   res.send("can post")
 })
 ```
@@ -395,7 +395,7 @@ Well it works, but it's not super valuable, we're not even getting our
 parameter. Let's add some stuff in `index.js`:
 
 ```js
-app.post("/", function(req, res){
+app.post("/", (req, res) => {
   res.send("hello " + req.params.player_name)
 })
 ```
@@ -429,8 +429,8 @@ the url. parameters in form data is `body`
 So we change the final post request in index.js to:
 
 ```js
-app.post("/", function(req, res){
-  res.send("hello " + req.body.player_name)
+app.post("/", (req, res) => {
+  res.send(`hello ${req.body.player_name}`)
 })
 ```
 
@@ -439,7 +439,7 @@ And finally, use it in our app:
 Update index.js:
 
 ```js
-app.post("/", function(req, res){
+app.post("/", (req, res) => {
   res.render("index", {
     player_name: req.body.player_name,
     bottles: 99,
@@ -457,7 +457,7 @@ And to our view:
 
 :tada:
 
-## You do - Ultimate Compliment
+## You do - Ultimate Compliment (Homework)
 
 * [Ultimate Compliment](https://github.com/ga-dc/compliment-express)
   * You might want to look at the [Sinatra Version Solution](https://github.com/ga-dc/emergency_compliment/tree/solution)
