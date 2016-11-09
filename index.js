@@ -1,10 +1,12 @@
 var express = require("express")
-
+var bodyParser = require("body-parser");
 var app = express();
 var jquery = require('jquery');
 
 app.use(express.static("public"))
 app.set("view engine", "hbs")
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(4000, ()=> {
   console.log("Consequences!")
@@ -38,7 +40,9 @@ var name = req.params.name || ""
     })
 })
 
-// app.get("/:name", (req,res)=>{
-//   name = req.params.name
-//
-// })
+app.post("/", (req, res) => {
+
+  // res.send(req.body.new_complement)
+  compliments.push(req.body.new_complement)
+
+})
