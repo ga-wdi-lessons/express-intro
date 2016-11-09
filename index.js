@@ -9,8 +9,10 @@ app.set("view engine", "hbs")
 app.listen(4000, ()=> {
   console.log("Consequences!")
 })
+//Geet/////////
+app.get("/:name?", (req,res)=>{
 
-app.get("/", (req,res)=>{
+var name = req.params.name || ""
 
     var compliments = [
       "Your instructors love you",
@@ -22,20 +24,21 @@ app.get("/", (req,res)=>{
 
     var colors = ["#FFBF00", "#0080FF","#01DF3A","#FF0080"]
 
+
     //determine which compliment to display
     var compliment = compliments[Math.floor((Math.random() * compliments.length - 1) + 1)];
 
-    //change color of body using jquery
+    //determine random color
     var color = colors[Math.floor((Math.random() * colors.length - 1) + 1)]
-
-    colorchange = function(){
-      document.getElementsByTagName("body").style.color = "red";
-    }
 
     res.render("index",{
       compliment:compliment,
+      color:color,
+      name:name,
     })
-    colorchange()  
 })
 
-// $("body").css("background-color", "red")
+// app.get("/:name", (req,res)=>{
+//   name = req.params.name
+//
+// })
