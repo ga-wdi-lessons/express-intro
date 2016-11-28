@@ -329,7 +329,8 @@ We could create a routes module that defines our index route. Let's create a `co
 ```js
 module.exports = {
   index( req, res ){
-    var bottles = parseInt(req.params.numberOfBottles) || 99;
+    var bottles =
+    req.params.numberOfBottles || 99;
     var next = bottles - 1;
     res.render('index',{
       bottles,
