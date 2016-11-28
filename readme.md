@@ -53,10 +53,8 @@ Q. What do you think npm is? (ST-WG)
 nodeJS application. Much like how gems did this for us in Rails.
 
 `$ npm init` will initialize a new NodeJS application. Upon initialization it
-will prompt you for some user input to update the package.json.
+will prompt you for some user input to update the package.json. Using the `-y` argument allows you to use the defaults and not prompt for any options.
 
-If we hit enter and use all of the default values and we take a look at the
-contents of the package.json file, we'll see something like this:
 
 ```bash
 $ cat package.json
