@@ -45,10 +45,11 @@ $ npm init -y
 $ npm install --save express
 ```
 
-Q. What did npm do just now? (ST-WG)
 ---
 
 <summary>
+Q. What did npm do just now? (ST-WG)
+
 <details>
 > npm, short for node package manager. Allows us to install dependencies for our
 nodeJS application. Much like how the bundler did this for gems in Rails.
