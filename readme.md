@@ -20,23 +20,22 @@ Let's list out the things we've covered in class...
 This is SO much stuff. We've pretty much covered the entire stack. Everything we
 cover from here on out is an extension of what we've already learned or a
 different language than we're used to. Today we'll be talking about [expressJS](https://expressjs.com/)
-the "e" in the MEAN stack. Which incidentally is super buzz wordy right now.
+the "E" in the MEAN stack.
 
 Express is a framework built on top of node.
 
 > Node.js is not a framework. It is an application runtime environment that
-allows you to write server-side applications in javascript. Javascript that
-does not depend on a browser.
+allows you to write server-side applications in javascript. Javascript written in this way, server-side that does not depend on a browser; it is running in its own environment. This was made possible by the V8 javascript engine.
 
 Some frameworks, like Rails, are very opinionated frameworks.
 
 Today, we'll be learning about Express, which is much less opinionated. Just
 like Sinatra, we have a lot of freedom in how we structure our application
-(folders/files, how to load different files, managing dependencies, etc)
+(folders/files, how to load different files, managing dependencies, etc). Express was modeled after Sinatra!
 
-## Hello World - Express (we do 30/45)
+## Hello World - Express (We Do 30 min, 45 min)
 
-Creating a simple hello world express application.
+Let's jump right into creating a simple "Hello World!" Express application.
 
 In the terminal:
 ```bash
@@ -46,14 +45,19 @@ $ npm init -y
 $ npm install --save express
 ```
 
-Q. What do you think npm is? (ST-WG)
+Q. What did npm do just now? (ST-WG)
 ---
 
+<summary>
+<details>
 > npm, short for node package manager. Allows us to install dependencies for our
-nodeJS application. Much like how gems did this for us in Rails.
+nodeJS application. Much like how the bundler did this for gems in Rails.
 
 `$ npm init` will initialize a new NodeJS application. Upon initialization it
 will prompt you for some user input to update the package.json. Using the `-y` argument allows you to use the defaults and not prompt for any options.
+</details>
+</summary>
+
 
 
 ```bash
