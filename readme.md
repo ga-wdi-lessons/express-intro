@@ -13,25 +13,21 @@
 
 ## Opening Framing (15/15)
 
-Let's list out the things we've covered in class...
+Let's start out by listing the things we've covered in the first 3 units of WDI.
 
----
 
-This is SO much stuff. We've pretty much covered the entire stack. Everything we
-cover from here on out is an extension of what we've already learned or a
-different language than we're used to. Today we'll be talking about [expressJS](https://expressjs.com/)
-the "E" in the MEAN stack.
+We've moved in and out of several different technological layers with increasing comfort over the course of the class. We've covered the entire stack almost twice over now. We're about to fill in that missing piece by talking about the Javascript back-end.
 
-Express is a framework built on top of node.
+Everything we cover from here on out is an extension of what we've already learned or a different language than we're used to. Today we'll be talking about [expressJS](https://expressjs.com/) (the **E** in the M**E**AN stack) and Node.js (the **N** in MEA**N**).
 
-> Node.js is not a framework. It is an application runtime environment that
+Express is a server framework built on top of node that is modelled after Sinatra.
+
+Node.js is not a framework. It is an application runtime environment that
 allows you to write server-side applications in javascript. Javascript written in this way, server-side that does not depend on a browser; it is running in its own environment. This was made possible by the V8 javascript engine.
 
-Some frameworks, like Rails, are very opinionated frameworks.
+The javascript we write when we use Node to execute (we'll see this momentarily) it differs in some ways from the javascript we've written and then loaded in the browser. It's still javascript, but the environment is different. Before we used Chrome to run our javascript, but we are about to get into writing javascript that will be executed by node and provide with a server environment. If this seems odd, but think back to Ruby and Sinatra.
 
-Today, we'll be learning about Express, which is much less opinionated. Just
-like Sinatra, we have a lot of freedom in how we structure our application
-(folders/files, how to load different files, managing dependencies, etc). Express was modeled after Sinatra!
+Some frameworks, like Rails, are very opinionated frameworks. Express is really much more like Sinatra than Rails: it is much less opinionated and much lighter weight. Just like we did with Sinatra, we have a lot of freedom in how we structure our application, it routes, resources and assets (folders/files, how to load different files, managing dependencies, etc). 
 
 ## Hello World - Express (We Do 30 min, 45 min)
 
