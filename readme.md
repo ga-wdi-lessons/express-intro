@@ -4,10 +4,10 @@
 
 - List common reasons Javascript is used for server applications
 - Compare and contrast Javascript in the browser vs JS on the server
-- Compare and contrast express.js to Rails / Sinatra.
+- Compare and contrast Express.js to Rails / Sinatra.
 - Use `npm` to manage project dependencies
 - Use `module.exports` and `require` to organize code
-- Use Handlebars templates to simplify rendering in express
+- Use Handlebars templates to simplify rendering in Express
 - Use and configure middleware, e.g. body-parser to handle form submissions
 - Link to static assets in an Express application
 
@@ -18,16 +18,19 @@ Let's start out by listing the things we've covered in the first 3 units of WDI.
 
 We've moved in and out of several different technological layers with increasing comfort over the course of the class. We've covered the entire stack almost twice over now. We're about to fill in that missing piece by talking about the Javascript back-end.
 
-Everything we cover from here on out is an extension of what we've already learned or a different language than we're used to. Today we'll be talking about [expressJS](https://expressjs.com/) (the **E** in the M**E**AN stack) and Node.js (the **N** in MEA**N**).
+Everything we cover from here on out is an extension of what we've already learned or a different language than we're used to. Today we'll be talking about [Express](https://expressjs.com/) (the **E** in the M**E**AN stack) and Node.js (the **N** in MEA**N**).
 
-Express is a server framework built on top of node that is modelled after Sinatra.
+Express is a server framework built on top of node that is modeled after Sinatra.
 
 Node.js is not a framework. It is an application runtime environment that
-allows you to write server-side applications in javascript. Javascript written in this way, server-side that does not depend on a browser; it is running in its own environment. This was made possible by the V8 javascript engine.
+allows you to write Javascript server-side applications. Server-side javascript does execute in the browser; it is running in its own environment in the Node application framework. This innovation was made possible by the V8 javascript engine.
 
-The javascript we write when we use Node to execute (we'll see this momentarily) it differs in some ways from the javascript we've written and then loaded in the browser. It's still javascript, but the environment is different. Before we used Chrome to run our javascript, but we are about to get into writing javascript that will be executed by node and provide with a server environment. If this seems odd, but think back to Ruby and Sinatra.
+The javascript we write executed by Node is still javascript, but the environment is a change from what we are used to--we've been using Chrome to run our javascript. Now, we will write javascript that will be executed by Node and provide our applications with a server framework called Express. If this seems odd, think back to Ruby and Sinatra.
 
-Some frameworks, like Rails, are very opinionated frameworks. Express is really much more like Sinatra than Rails: it is much less opinionated and much lighter weight. Just like we did with Sinatra, we have a lot of freedom in how we structure our application, it routes, resources and assets (folders/files, how to load different files, managing dependencies, etc).
+The relation is analogous!
+> Express:NodeJS::Sinatra:Ruby
+
+Some frameworks, like Rails, are very opinionated frameworks. Express is really much more like Sinatra than Rails: it is much less opinionated and much lighter weight. Just like we did with Sinatra, we have a lot of freedom in how we structure our application, its routes, resources, and assets (folders/files, how to load different files, managing dependencies, etc).
 
 ## Hello World - Express (We Do 30 min, 45 min)
 
@@ -102,7 +105,7 @@ app.listen(4000, () => {
 });
 ```
 
-We've required the express module. We then create another variable that invokes
+We've required the Express module. We then create another variable that invokes
 the module. The app variable is where we can set up which port to listen to and
 the different requests the server should listen for.
 
@@ -149,7 +152,7 @@ Q. What was the fix for that in Sinatra?
 
 > sinatra/reloader from the sinatra-contrib repo.
 
-Turns out express has something similar, nodemon.
+Turns out Express has something similar, nodemon.
 
 In the terminal:
 
@@ -194,7 +197,7 @@ Beer](https://github.com/ga-dc/99_bottles_express/tree/solution) to learn about
 views.
 
 Remember how we utilized erb in Sinatra and rails?  We need to be able to do the
-same sort of templating with Express. For express, we'll use handlebars. To
+same sort of templating with Express. For Express, we'll use handlebars. To
 install handlebars into our node application enter the following in the
 terminal:
 
@@ -209,7 +212,7 @@ app.set("view engine", "hbs");
 ```
 
 Let's go ahead and create a directory and some views. In the root directory of
-the express 99 bottles application. In the terminal:
+the Express 99 bottles application. In the terminal:
 
 ```bash
 $ mkdir views
@@ -403,9 +406,9 @@ app.post("/", (req, res) => {
 hello undefined... oh man.. and just to be sure let's `console.log(req.params)`.
 It's an empty object!
 
-Our html form information is not in `req.params`. Express is not handling information posted from an html form.  We need to install middleware in order to get form data and JSON data in a POST request for express applications. Rails and Sinatra already include the middleware to handle this(RACK). By default express does not, so we need to install it manually.
+Our html form information is not in `req.params`. Express is not handling information posted from an html form.  We need to install middleware in order to get form data and JSON data in a POST request for Express applications. Rails and Sinatra already include the middleware to handle this(RACK). By default Express does not, so we need to install it manually.
 
-> middleware is code that runs in between receiving the request and responding. Body-parser used to be included to express, but they took it out.
+> middleware is code that runs in between receiving the request and responding. Body-parser used to be included to Express, but they took it out.
 
 In the terminal:
 
@@ -423,7 +426,7 @@ app.use(bodyParser.json()); //handles json post requests
 app.use(bodyParser.urlencoded({ extended: true })); // handles form submissions
 ```
 
-Another thing to note is that, in express, `params` is always for parameters in
+Another thing to note is that, in Express, `params` is always for parameters in
 the url. parameters in form data is `body`
 
 So we change the final post request in index.js to:
@@ -465,6 +468,6 @@ And to our view:
 ## Sample Quiz Questions
 - What is `npm`?
 
-- Write a get request using any path as you would in an express application.
+- Write a get request using any path as you would in an Express application.
 
 - How does `module.exports` help us with separation of concerns?
