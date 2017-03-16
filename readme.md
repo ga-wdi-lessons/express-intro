@@ -27,7 +27,7 @@ allows you to write server-side applications in javascript. Javascript written i
 
 The javascript we write when we use Node to execute (we'll see this momentarily) it differs in some ways from the javascript we've written and then loaded in the browser. It's still javascript, but the environment is different. Before we used Chrome to run our javascript, but we are about to get into writing javascript that will be executed by node and provide with a server environment. If this seems odd, but think back to Ruby and Sinatra.
 
-Some frameworks, like Rails, are very opinionated frameworks. Express is really much more like Sinatra than Rails: it is much less opinionated and much lighter weight. Just like we did with Sinatra, we have a lot of freedom in how we structure our application, it routes, resources and assets (folders/files, how to load different files, managing dependencies, etc). 
+Some frameworks, like Rails, are very opinionated frameworks. Express is really much more like Sinatra than Rails: it is much less opinionated and much lighter weight. Just like we did with Sinatra, we have a lot of freedom in how we structure our application, it routes, resources and assets (folders/files, how to load different files, managing dependencies, etc).
 
 ## Hello World - Express (We Do 30 min, 45 min)
 
@@ -77,7 +77,7 @@ $ cat package.json
 importantly, it includes the list of dependencies to install from npm when
 running npm install.
 
-The next thing I'd like to do is install the express node module. In the
+The next thing I'd like to do is install the Express node module. In the
 terminal:
 
 ```bash
@@ -94,8 +94,8 @@ Let's make a new file `$ touch index.js` and place the following contents. In
 `index.js`:
 
 ```javascript
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
 
 app.listen(4000, () => {
   console.log("app listening on port 4000");
@@ -225,8 +225,8 @@ In `index.js`:
 ```javascript
 // instead of
 // app.get("/:numberOfBottles?", ( req, res ) => {
-//   var numberOfBottles = req.params.numberOfBottles || 99
-//   var next = numberOfBottles - 1
+//   let numberOfBottles = req.params.numberOfBottles || 99
+//   let next = numberOfBottles - 1
 //   if (numberOfBottles > 1){
 //     res.send(numberOfBottles + " bottles of beer on the wall <a href='/" + next + "'>Take one down pass it around")
 //   }
@@ -237,8 +237,8 @@ In `index.js`:
 
 // we want this
 app.get("/:numberOfBottles?", ( req, res ) => {
-  var bottles = req.params.numberOfBottles || 99;
-  var next = bottles - 1;
+  let bottles = req.params.numberOfBottles || 99;
+  let next = bottles - 1;
   res.render("index", {bottles, next});
 })
 ```
@@ -310,7 +310,7 @@ module.exports = {
 ```js
 // in index.js
 // instantiate global variable to grant access to module we've created
-var calculator = require("./calculator.js");
+const calculator = require("./calculator.js");
 
 // use variable to call the .add() function defined in calculator.js
 calculator.add(3,4)
@@ -320,7 +320,7 @@ Well, we can actually separate our concerns using `module.exports` If we change
 our get request in `index.js`:
 
 ```js
-var bottles = require("./controllers/bottles.js");
+const bottles = require("./controllers/bottles.js");
 app.get("/:numberOfBottles?", bottles.index );
 ```
 
@@ -330,9 +330,9 @@ We could create a routes module that defines our index route. Let's create a `co
 ```js
 module.exports = {
   index( req, res ){
-    var bottles =
+    let bottles =
     req.params.numberOfBottles || 99;
-    var next = bottles - 1;
+    let next = bottles - 1;
     res.render('index',{
       bottles,
       next
@@ -417,7 +417,7 @@ In `index.js`:
 
 ```js
 // configure app to use body parser
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 
 app.use(bodyParser.json()); //handles json post requests
 app.use(bodyParser.urlencoded({ extended: true })); // handles form submissions
