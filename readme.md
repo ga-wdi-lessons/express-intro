@@ -23,9 +23,9 @@ Everything we cover from here on out is an extension of what we've already learn
 Express is a server framework built on top of node that is modeled after Sinatra.
 
 Node.js is not a framework. It is an application runtime environment that
-allows you to write Javascript server-side applications. Server-side javascript does execute in the browser; it is running in its own environment in the Node application framework. This innovation was made possible by the V8 javascript engine.
+allows you to write Javascript server-side applications. Server-side Javascript does execute in the browser; it is running in its own environment in the Node application framework. This innovation was made possible by the V8 Javascript engine.
 
-The javascript we write executed by Node is still javascript, but the environment is a change from what we are used to--we've been using Chrome to run our javascript. Now, we will write javascript that will be executed by Node and provide our applications with a server framework called Express. If this seems odd, think back to Ruby and Sinatra.
+The Javascript we write executed by Node is still Javascript, but the environment is a change from what we are used to--we've been using Chrome to run our Javascript. Now, we will write Javascript that will be executed by Node and provide our applications with a server framework called Express. If this seems odd, think back to Ruby and Sinatra.
 
 The relation is analogous!
 > Express:NodeJS::Sinatra:Ruby
@@ -46,17 +46,17 @@ $ npm install --save express
 
 ---
 
-<summary>
-Q. What did npm do just now? (ST-WG)
-
 <details>
-> npm, short for node package manager. Allows us to install dependencies for our
-nodeJS application. Much like how the bundler did this for gems in Rails.
+  <summary>
+  Q. What did npm do just now? (ST-WG)
+  </summary>
 
-`$ npm init` will initialize a new NodeJS application. Upon initialization it
-will prompt you for some user input to update the package.json. Using the `-y` argument allows you to use the defaults and not prompt for any options.
+  > npm, short for node package manager. Allows us to install dependencies for our
+  nodeJS application. Much like how the bundler did this for gems in Rails.
+
+  `$ npm init` will initialize a new NodeJS application. Upon initialization it
+  will prompt you for some user input to update the package.json. Using the `-y` argument allows you to use the defaults and not prompt for any options.
 </details>
-</summary>
 
 
 
@@ -80,7 +80,7 @@ $ cat package.json
 importantly, it includes the list of dependencies to install from npm when
 running npm install.
 
-The next thing I'd like to do is install the Express node module. In the
+The next thing We'd like to do is install the Express node module. In the
 terminal:
 
 ```bash
@@ -96,7 +96,7 @@ can certainly change this, but we'll use the default for now.
 Let's make a new file `$ touch index.js` and place the following contents. In
 `index.js`:
 
-```javascript
+```js
 const express = require("express");
 const app = express();
 
@@ -126,7 +126,7 @@ OH NOES, what's going on here?
 Basically we've told the server what port to listen on, but we didn't specify
 what to do if a user goes to the `"/"` route. Let's update `index.js`:
 
-```javascript
+```js
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
@@ -175,7 +175,7 @@ $ nodemon index.js
 Remember parameters in our ruby frameworks? It's very similar in JS. Let's
 update `index.js` to include:
 
-```javascript
+```js
 app.get("/:name", (req, res) => {
   res.send(`hello ${req.params.name}`);
 });
@@ -207,7 +207,7 @@ $ npm install --save hbs
 
 Then we need to set the view engine to be handle bars inside of the `index.js`:
 
-```javascript
+```js
 app.set("view engine", "hbs");
 ```
 
@@ -225,7 +225,7 @@ sending in a string directly.
 
 In `index.js`:
 
-```javascript
+```js
 // instead of
 // app.get("/:numberOfBottles?", ( req, res ) => {
 //   let numberOfBottles = req.params.numberOfBottles || 99
@@ -333,8 +333,7 @@ We could create a routes module that defines our index route. Let's create a `co
 ```js
 module.exports = {
   index( req, res ){
-    let bottles =
-    req.params.numberOfBottles || 99;
+    let bottles = req.params.numberOfBottles || 99;
     let next = bottles - 1;
     res.render('index',{
       bottles,
@@ -406,9 +405,9 @@ app.post("/", (req, res) => {
 hello undefined... oh man.. and just to be sure let's `console.log(req.params)`.
 It's an empty object!
 
-Our html form information is not in `req.params`. Express is not handling information posted from an html form.  We need to install middleware in order to get form data and JSON data in a POST request for Express applications. Rails and Sinatra already include the middleware to handle this(RACK). By default Express does not, so we need to install it manually.
+Our html form information is not in `req.params`. Express is not handling information posted from an html form.  We need to install middleware in order to get form data and JSON data in a POST request for Express applications. Rails and Sinatra already include the middleware to handle this (RACK). By default Express does not, so we need to install it manually.
 
-> middleware is code that runs in between receiving the request and responding. Body-parser used to be included to Express, but they took it out.
+> Middleware is code that runs in between receiving the request and responding. Body-parser used to be included to Express, but they took it out.
 
 In the terminal:
 
