@@ -15,10 +15,9 @@
 
 Let's start out by listing the things we've covered in the first 3 units of WDI.
 
+We've moved in and out of several different technological layers with increasing comfort over the course of the class. We've covered the entire stack  in ruby, and have covered the front-end in Javasript. We're about solidify our full-stack knowledge and extend it completely to Javascript, and get into writing server-side Javascript and Javascript back-ends.
 
-We've moved in and out of several different technological layers with increasing comfort over the course of the class. We've covered the entire stack almost twice over now. We're about to fill in that missing piece by talking about the Javascript back-end.
-
-Everything we cover from here on out is an extension of what we've already learned or a different language than we're used to. Today we'll be talking about [Express](https://expressjs.com/) (the **E** in the M**E**AN stack) and Node.js (the **N** in MEA**N**).
+Everything we cover from here on out is an extension of what we've already learned, just with the twist of being in a different domain. Today we'll be talking about [Express](https://expressjs.com/) (the **E** in the M**E**AN stack) and Node.js (the **N** in MEA**N**).
 
 Express is a server framework built on top of node that is modeled after Sinatra.
 
