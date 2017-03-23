@@ -156,7 +156,8 @@ Turns out Express has something similar, nodemon.
 In the terminal:
 
 ```bash
-$ npm install --global nodemon
+$ npm install --
+nodemon
 ```
 
 > When using the `--global` flag (-g for short), we're specifying that nodemon
@@ -295,9 +296,7 @@ utilize control flow in our view as well! The syntax your seeing for the conditi
 
 ## module.exports (20/120)
 
-`module.exports` allows us to separate our js files by exposing their contents
-as one global variable. The global variable isn't assigned until we require the
-file.
+`module.exports` allows us to separate our js files by exposing some or potentially all of their contents in a exported object. In another file, we can import the exported code with `require()` and assign it to a variable local to the file it is imported into, in this case `index.js`. 
 
 For example:
 ```js
