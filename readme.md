@@ -291,7 +291,40 @@ before. In `views/index.hbs`:
 
 ## module.exports (20/120)
 
-`module.exports` allows us to separate our js files by exposing some or potentially all of their contents in a exported object. In another file, we can import the exported code with `require()` and assign it to a variable local to the file it is imported into, in this case `index.js`.
+A major distinction between JavaScript run in the browser and JavaScript run on the server is how it the code loaded into the environment.
+
+<details>
+<summary>How do we load a script in the browser</summary>
+
+> We use a script tag (`<script src="/path/to/script"></script>`) in our HTML to tell the client browser to request, to load, and run a script
+
+</details>
+
+
+<details>
+<summary>Why is this not an option in a server side environment?</summary>
+
+> On the server, there is no HTML document
+
+</details>
+
+<details>
+<summary>What does it mean to 'polute the global namespace' and how have we seen this problem in the browser?</summary>
+
+> 'Poluting the global namespace' means declaring variables in globla scope.
+This is undesirable because the larger an app is and the more global scope is used, the more likely we are to have a collision where some part of the app uses a global variable for one purpose and different part of the app uses a global variable with the same name for another.
+
+> In the browser, the _only_ way for different scripts to interact with one another is the global namespace.
+
+> AngularJS kept track of modules internally and we wrapped all of our code in IIFEs so that the extend of polution of the global namespace was just the `angular` object.
+
+</details>
+
+We have already seen the `require` method used to load JavaScript files and modules. The `require` method returns a value which can be set to a variable and does not need to be grabbed out of global scope.
+
+Node is doing something similar to AngularJS in managing dependencies for us to keeps things organized.
+The other end of the `require` method, is the `module.exports` object.
+By assigning particular values to `module.exports`, we can explicitly define the object that will be brought in when another file `requires()` the file file from which we are exporting.
 
 For example:
 ```js
@@ -302,6 +335,9 @@ module.exports = {
   }
 }
 ```
+To use `require(...)` to import a local file rather than a node module (like `require('express')`), the string `require` is called with needs to be a path.
+
+Since the argument to require needs to be recognizable as a path, the path to a file in the same directory needs to be prefaced with a `./`.
 
 ```js
 // in index.js
@@ -312,15 +348,13 @@ const calculator = require("./calculator.js");
 calculator.add(3,4)
 ```
 
-Well, we can actually separate our concerns using `module.exports` If we change
-our get request in `index.js`:
+A practical example would be to import our route handlers from a seperate file:
 
 ```js
 const bottles = require("./controllers/bottles.js");
 app.get("/:numberOfBottles?", bottles.index );
 ```
 
-to this instead. The `./` refers to the current directory, which must be explicitly stated.
 We could create a routes module that defines our index route. Let's create a `controllers/bottles.js` file with the following contents:
 
 ```js
@@ -336,14 +370,10 @@ module.exports = {
 };
 ```
 
-> You can see that almost nothing has changed, really we just moved the
-functionality into a different file. What advantages does that bring to us with
-regard to separation of concerns in MVC? (st-wg)
+> We see the exact same behavior; just moved some logic into a different file.
+What advantages does that bring to us with regard to separation of concerns in MVC? (st-wg)
 
-You can start to see the necessity of `module.export` when we start to add
-models to our application. If we had the 7 RESTful routes that rails have for
-each model, you can start to see how keeping everything in the `index.js` can
-begin to become unwieldy.
+If we had the 7 RESTful routes that Rails provides for each model, you can start to see how keeping everything in the `index.js` can begin to become unwieldy.
 
 ## Break (10/130)
 
