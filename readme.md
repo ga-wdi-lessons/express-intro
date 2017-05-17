@@ -15,16 +15,17 @@
 
 Let's start out by listing the things we've covered in the first 3 units of WDI.
 
-// TODO: reword
-We've moved in and out of several different technological layers with increasing comfort over the course of the class. We've covered the entire stack in ruby, and have covered the front-end in Javasript. We're about solidify our full-stack knowledge and extend it completely to JavaScript, and get into writing server-side JavaScript and JavaScript back-ends.
+First we wrote code for the client using JavaScript for our application logic.
+Next, we moved into Ruby and wrote apps with server rendered pages with all of our logic in Ruby.
+Most recently, we wrote more complex code to be run as a Single Page App using AngularJS and supporting the client code with a Rails API.
 
-Everything we cover from here on out is an extension of what we've already learned, just with the twist of being in a different domain. Today we'll be talking about [Express](https://expressjs.com/) (the **E** in the M**E**AN stack) and Node.js (the **N** in MEA**N**).
+This most recent paradigm, SPA supported by a seperate API will be the one we use going forward and is close to the 'micro-service' architecture that is very popular contemporarily.
+
+The class introduces Node and Express. Node is a JavaScript runtime environment (ie a program for running JavaScript code) for running JS in a server environment.
+
+Everything we cover from here on out is an extension of what we've already learned, just with the twist of being in a different domain. Writing JavaScript for the server has become very popular (the **E** in the M**E**AN stack) and Node.js (the **N** in MEA**N**).
 
 Express is a ["Sinatra inspired web development framework for node.js."](https://expressjs.com/)
-
-// TODO: move up (introduce node and then express)
-Node.js is not a framework. It is an application runtime environment that
-allows you to write JavaScript server-side applications. Server-side JavaScript does execute in the browser; it is running in its own environment in the Node application framework. This innovation was made possible by the V8 JavaScript engine.
 
 The JavaScript we write to be executed by Node is still JavaScript, but the environment is different. we've been writting JavaScript to be run by a browser on a client machine. Now, we will write JavaScript to be run by Node on our server as we had done with Ruby. A web framework is a toolset for listening for and responding to web requests. The first web framework we used in Ruby was Sinatra; through just the line `require 'sinatra'`, we got access to a bunch of methods we could use to listen for particular requests. Next we used Rails which served the same purpose as Sinatra but made lots of inferences for us and provided extremely powerful helper tools. Frameworks that leverage inference and "convention over configuration" are called opinionated. Rails is extremely opinionated. Sinatra is not. The Express project prides itself in being unopinionated. Just like we did with Sinatra, we have a lot of freedom in how we structure our application, its routes, resources, and assets (folders/files, how to load different files, managing dependencies, etc).
 
