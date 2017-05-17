@@ -379,7 +379,7 @@ If we had the 7 RESTful routes that Rails provides for each model, you can start
 
 ## HTML Forms: Bodyparser & Post requests (20/150)
 
-Let's incorporate the player a bit more.  Let's create a welcome page that asks for their name.
+Let's personalize our 99 bottles app.  We'll make a welcome page with a form asking for user's name.
 
 We need a route and a view (with a form)
 
@@ -403,25 +403,27 @@ app.get("/", (req, res) => {
 
 Submit a name:
 
-```get CANNOT POST/```
+```
+Cannot POST /
+```
 
-Q. How can we fix this?
----
+### Q. How can we fix this?
 
 > In `index.js`...
 
 ```js
 app.post("/", (req, res) => {
-  res.send("can post")
+  res.send("Hello there!")
 })
 ```
 
 Well it works, but it's not super valuable, we're not even getting our
-parameter. Let's add some stuff in `index.js`:
+parameter.
+Let's greet the name submitted in the form:
 
 ```js
 app.post("/", (req, res) => {
-  res.send("hello " + req.params.player_name)
+  res.send("Hello " + req.params.player_name)
 })
 ```
 
@@ -448,8 +450,12 @@ app.use(bodyParser.json()); //handles json post requests
 app.use(bodyParser.urlencoded({ extended: true })); // handles form submissions
 ```
 
-Another thing to note is that, in Express, `params` is always for parameters in
-the url. parameters in form data is `body`
+NB: only the urlencoded bodyparser middleware is necessary to get this form working.
+The json bodyparser is necessary if we want to handle AJAX requests with JSON bodies.
+
+Another thing to note is that, in Express, `req.params` holds just path params.
+Anything handled by the bodyParser (json or form bodies) will be held in `req.body`.
+If you want to get at values in a query string (ie url after a `?`), these values will be held in `req.query`
 
 So we change the final post request in index.js to:
 
@@ -459,7 +465,7 @@ app.post("/", (req, res) => {
 })
 ```
 
-And finally, use it in our app:
+And finally, we'll integrate it the name into our index template:
 
 Update index.js:
 
