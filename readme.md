@@ -103,7 +103,7 @@ app.listen(4000, () => {
 ```
 
 We've required the Express module which is a function that returns an instance of a web app.
-We invokes the  module instantiating a constant `app` which holds all the methods and state we use to write and run our web app.
+We invoke the module instantiating a constant `app` which holds all the methods and state we use to write and run our web app.
 The listen method starts the app and specifies the port where the app will listen for requests.
 
 > How is this similar to Sinatara? How is it different?
@@ -325,7 +325,7 @@ We have already seen the `require` method used to load JavaScript files and modu
 
 Node is doing something similar to AngularJS in managing dependencies for us to keeps things organized.
 The other end of the `require` method, is the `module.exports` object.
-By assigning particular values to `module.exports`, we can explicitly define the object that will be brought in when another file `requires()` the file file from which we are exporting.
+By assigning particular values to `module.exports`, we can explicitly define the object that will be brought in when another file `requires()` the file from which we are exporting.
 
 For example:
 ```js
@@ -433,7 +433,14 @@ It's an empty object!
 
 Our html form information is not in `req.params`. Express is not handling information posted from an html form.  We need to install middleware in order to get form data and JSON data in a POST request for Express applications. Rails and Sinatra already include the middleware to handle this (RACK). By default Express does not, so we need to install it manually.
 
-> Middleware is code that runs in between receiving the request and responding. Body-parser used to be included to Express, but they took it out.
+Middleware is code that runs in between receiving the request and responding. Body-parser used to be included to Express, but they took it out.
+
+Another very commonly used middleware is the [`cors` module](https://github.com/expressjs/cors).
+Like `body-parser`, `cors` is also maintained by the express team.
+
+Express prides itself in its minimalism.
+There are many [frameworks built on express](https://expressjs.com/en/resources/frameworks.html) that are opinionated and do a lot more out of the box.
+Express tries to stay flexible though.
 
 In the terminal:
 
