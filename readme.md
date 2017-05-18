@@ -15,25 +15,62 @@
 
 Let's start out by listing the things we've covered in the first 3 units of WDI.
 
-First we wrote code for the client using JavaScript for our application logic.
-Next, we moved into Ruby and wrote apps with server rendered pages with all of our logic in Ruby.
-Most recently, we wrote more complex code to be run as a Single Page App using AngularJS and supporting the client code with a Rails API.
+- First we wrote code for the client using JavaScript for our application logic.
+- Next, we moved into Ruby and wrote apps with server rendered pages with all of our logic in Ruby.
+- Most recently, we wrote more complex code to be run as a Single Page App using AngularJS and supporting the client code with a Rails API.
 
 This most recent paradigm, SPA supported by a seperate API will be the one we use going forward and is close to the 'micro-service' architecture that is very popular contemporarily.
 
 The class introduces Node and Express. Node is a JavaScript runtime environment (ie a program for running JavaScript code) for running JS in a server environment.
 
-Everything we cover from here on out is an extension of what we've already learned, just with the twist of being in a different domain. Writing JavaScript for the server has become very popular (the **E** in the M**E**AN stack) and Node.js (the **N** in MEA**N**).
-
 Express is a ["Sinatra inspired web development framework for node.js."](https://expressjs.com/)
-
-The JavaScript we write to be executed by Node is still JavaScript, but the environment is different. we've been writting JavaScript to be run by a browser on a client machine. Now, we will write JavaScript to be run by Node on our server as we had done with Ruby. A web framework is a toolset for listening for and responding to web requests. The first web framework we used in Ruby was Sinatra; through just the line `require 'sinatra'`, we got access to a bunch of methods we could use to listen for particular requests. Next we used Rails which served the same purpose as Sinatra but made lots of inferences for us and provided extremely powerful helper tools. Frameworks that leverage inference and "convention over configuration" are called opinionated. Rails is extremely opinionated. Sinatra is not. The Express project prides itself in being unopinionated. Just like we did with Sinatra, we have a lot of freedom in how we structure our application, its routes, resources, and assets (folders/files, how to load different files, managing dependencies, etc).
 
 The relation is analogous!
 > Express:NodeJS::Sinatra:Ruby
 
+
+<details>
+  <summary>What is a web framework?</summary>
+  <p style="color:grey;">
+  A web framework is a toolset for listening for an responding to web requests.
+  </p>  
+</details>
+
+
+<details>
+  <summary>
+  What is meant by opinionated/unopinionated in regards to frameworks?
+  </summary>
+  <p style="color:grey;">
+  The first web framework we used in Ruby was Sinatra; through just the line `require 'sinatra'`, we got access to a bunch of methods we could use to listen for particular requests. Next we used Rails which served the same purpose as Sinatra but made lots of inferences for us and provided extremely powerful helper tools. Frameworks that leverage inference and "convention over configuration" are called opinionated. Rails is extremely opinionated. Sinatra is not.  
+  </p>
+  <p style="color:grey;">
+  The Express project prides itself in being unopinionated. Just like we did with Sinatra, we have a lot of freedom in how we structure our application, its routes, resources, and assets (folders/files, how to load different files, managing dependencies, etc). This also means we need to do more ourselves.
+  </p>
+</details>
+
+
+
 ### Turn and Talk (3 min)
 - Why might we prefer an unopinionated framework?
+
+## Full Stack JavaScript
+Everything we cover from here on is an extension of what we've already learned.
+We will use Node and Express to do the exact same thing we have done with Ruby and Sinatra/Rails.
+
+Writing JavaScript for the server has become very popular because it allows you to write all JavaScript.
+The MEAN stack (MongoDB, Express, Angular, Node) is a very popular all JS tech stack.
+
+The JavaScript we write to be executed by Node is still JavaScript, but the environment is different. We've been writing JavaScript to be run by a browser on a client machine. Now, we will write JavaScript to be run by Node on our server as we had done with Ruby.
+
+<details>
+  <summary>
+  What is the global object in the browser environment?
+  </summary>
+
+  > `window`. In node, the global object is `process`
+
+</details>
 
 ## Hello World - Express (We Do 30 min, 45 min)
 
