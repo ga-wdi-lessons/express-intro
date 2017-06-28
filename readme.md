@@ -127,12 +127,12 @@ We can see in `package.json` that the default main file for a node app is `index
 Let's make a new `index.js` file and give it the following contents...
 
 ```js
-const express = require("express");
-const app = express();
+const express = require("express")
+const app = express()
 
 app.listen(4000, () => {
-  console.log("app listening on port 4000");
-});
+  console.log("app listening on port 4000")
+})
 ```
 
 What's going on here?
@@ -159,8 +159,8 @@ Let's update `index.js`...
 
 ```js
 app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+  res.send("Hello World")
+})
 ```
 
 We added a route and handled it by sending the string `"hello world"` as the response. Let's see if this takes effect in the browser...
@@ -210,8 +210,8 @@ Let's update `index.js` to include...
 
 ```js
 app.get("/:name", (req, res) => {
-  res.send(`hello ${req.params.name}`);
-});
+  res.send(`hello ${req.params.name}`)
+})
 ```
 
 ## Break (10 minutes / 0:55)
@@ -240,7 +240,7 @@ $ npm install --save hbs
 In `index.js`, let's [configure our express app](https://expressjs.com/en/guide/using-template-engines.html) to use Handlebars as its "view engine"...
 
 ```js
-app.set("view engine", "hbs");
+app.set("view engine", "hbs")
 ```
 
 Let's go ahead and create a directory that will contain our templates in the root directory of
@@ -390,7 +390,7 @@ module.exports = {
       next
     })
   }
-};
+}
 ```
 
 > We see the exact same behavior – just moved some logic into a different file.
@@ -475,7 +475,7 @@ app.use(bodyParser.urlencoded({ extended: true })) // handles form submissions
 ```
 
 > Only the urlencoded bodyparser middleware is necessary to get this form working.
-The json bodyparser is necessary if we want to handle AJAX requests with JSON bodies.
+The JSON bodyparser is necessary if we want to handle AJAX requests with JSON bodies.
 
 Another thing to note is that, in Express, `req.params` holds just path params. Anything handled by the bodyParser (JSON or form bodies) will be held in `req.body`.
 If you want to get at values in a query string (ie url after a `?`), these values will be held in `req.query`
@@ -507,8 +507,6 @@ And to our view...
   Hey {{player_name}}, there are
 {{/if}}
 ```
-
-:tada:
 
 ## You Do: Emergency Compliment (Homework)
 
