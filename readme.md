@@ -57,7 +57,7 @@ Why might we prefer an un-opinionated framework? Why might we not?
 Everything we cover from here on is an extension of what we've already learned.
 We will use Node and Express to do the exact same thing we have done with Ruby and Sinatra/Rails.
 
-Writing JavaScript for the server has become very popular because it allows you to write everything in JavaScript.
+Writing JavaScript for the server has become very popular because it allows you to write front-end and back-end code in JavaScript.
 The MEAN stack (MongoDB, Express, Angular, Node) is a very popular all-JS tech stack.
 
 The JavaScript we write today is the same JavaScript we've come to know – it's just the environment that's different. We've been writing JavaScript to be run by a browser on a client machine. Now we will write JavaScript to be run by Node on a server.
@@ -397,7 +397,7 @@ If we had the seven RESTful routes that Rails provides for each model, you can s
 
 ## Break (10 minutes / 2:15)
 
-## HTML Forms: Bodyparser & POST Requests (20 minutes / 150)
+## HTML Forms & POST Requests (20 minutes / 2:35)
 
 Let's personalize our 99 bottles app.  We'll make a welcome page with a form asking for user's name.
 
@@ -448,6 +448,8 @@ hello undefined. Oh man. To be sure let's `console.log(req.params)`.
 It's an empty object!
 
 Our HTML form information is not in `req.params`. That's because Express is not handling information posted from a form. We need to install middleware – code that runs in between receiving the request and responding – in order to get form or JSON data in a POST request for Express applications. Rails and Sinatra already include the middleware to handle this. Express, by default, does not, so we need to install it manually.
+
+### You Do: `body-parser` Walkthrough (10 minutes)
 
 The middleware we will install is called **body-parser**. It used to be included to Express, but they took it out.
 
@@ -501,6 +503,11 @@ And to our view...
   Hey {{player_name}}, there are {{bottles}} left on the wall.
 {{/if}}
 ```
+
+> Be prepared to answer the following questions after completing this walkthrough...
+> - What is the purpose of `body-parser`?
+> - What is the difference between `bodyParser.urlencoded` and `bodyParser.json`?
+> - How do we go about accessing values sent through a form in Express?
 
 ## You Do: Emergency Compliment (Homework)
 
