@@ -27,6 +27,7 @@ This lesson introduces two new tools: Node and Express.
 
 <details>
   <summary><strong>What is a web framework?</strong></summary>
+  <br>
 
   > A web framework is a toolset for listening and responding to web requests.
 
@@ -36,6 +37,7 @@ This lesson introduces two new tools: Node and Express.
 
 <details>
   <summary><strong>What do we mean when we say a framework is opinionated or un-opinionated?</strong></summary>
+  <br>
 
   > The first web framework we used in Ruby was Sinatra. With `require 'sinatra'` we got access to a bunch of methods we could use to listen for particular requests. Next we used Rails, which served the same purpose as Sinatra but made lots of inferences for us and provided extremely powerful helper tools. Frameworks that leverage inference and "convention over configuration" are called opinionated. Rails is extremely opinionated. Sinatra is not.  
   >
@@ -64,6 +66,7 @@ The JavaScript we write today is the same JavaScript we've come to know – it'
 
 <details>
   <summary><strong>What is the global object in the browser environment?</strong></summary>
+  <br>
 
   > `window`. In node, the global object is `process`
 
@@ -85,6 +88,7 @@ $ npm init -y
 
 <details>
   <summary><strong>What does <code>npm init -y</code> do?</strong></summary>
+  <br>
 
   > `$ npm init` will initialize a new NodeJS application. Upon initialization it
   will prompt you for some user input to update the package.json. Using the `-y` argument allows you to use the defaults and not prompt for any options.
@@ -148,6 +152,7 @@ Cannot GET /
 <details>
 
   <summary><strong>What does this error mean? How might it be similar to what weve' seen in Sinatra and Rails?</strong></summary>
+  <br>
 
   > We've told the server what port to listen on, but we didn't specify any route handlers. The absence of a `get` handler for the `"/"` route is our problem here.
 
@@ -179,6 +184,7 @@ Constantly needing to restart the server will get very tedious.
 
 <details>
   <summary><strong>What was the fix for that in Sinatra?</strong></summary>
+  <br>
 
   > `sinatra/reloader` from the sinatra-contrib repo would restart the server any time that files changed
 
@@ -310,6 +316,7 @@ A major distinction between JavaScript run in the browser and JavaScript run on 
 
 <details>
   <summary><strong>How do we load a script in the browser?</strong></summary>
+  <br>
 
   > We use a script tag (`<script src="/path/to/script"></script>`) in our HTML to tell the client browser to request, to load and run a script.
 
@@ -319,6 +326,7 @@ A major distinction between JavaScript run in the browser and JavaScript run on 
 
 <details>
   <summary><strong>Why is this not an option in a server side environment?</strong></summary>
+  <br>
 
   > There is no HTML document on the server.
 
@@ -328,6 +336,7 @@ A major distinction between JavaScript run in the browser and JavaScript run on 
 
 <details>
   <summary><strong>What does it mean to "pollute the global namespace" and how have we seen this problem in the browser?</strong></summary>
+  <br>
 
   > "Polluting the global namespace" means declaring variables in a global scope.
   >
