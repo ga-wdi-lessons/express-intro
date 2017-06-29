@@ -84,7 +84,7 @@ $ npm init -y
 **npm** stands for "Node Package Manager". npm installs and manages dependencies – called "modules" in JavaScript – for our Node application. Modules are analogous to Gems in Ruby, while npm is similar to Bundler.
 
 <details>
-  <summary><strong>What did <code>npm init -y</code> do?</strong></summary>
+  <summary><strong>What does <code>npm init -y</code> do?</strong></summary>
 
   > `$ npm init` will initialize a new NodeJS application. Upon initialization it
   will prompt you for some user input to update the package.json. Using the `-y` argument allows you to use the defaults and not prompt for any options.
@@ -146,11 +146,14 @@ Cannot GET /
 ```
 
 <details>
+
   <summary><strong>What does this error mean? How might it be similar to what weve' seen in Sinatra and Rails?</strong></summary>
 
   > We've told the server what port to listen on, but we didn't specify any route handlers. The absence of a `get` handler for the `"/"` route is our problem here.
 
 </details>
+
+<br>
 
 Let's update `index.js`...
 
@@ -166,7 +169,7 @@ We added a route and handled it by sending the string `"hello world"` as the res
 Cannot GET /
 ```
 
-No change. The running server however has not been changed until we restart the server (also remeniscent of Sinatra) and refresh the page in the browser. And we see...
+No change. The running server however has not been changed until we restart the server and refresh the page in the browser. And we see...
 
 ```
 Hello World
@@ -181,7 +184,9 @@ Constantly needing to restart the server will get very tedious.
 
 </details>
 
-The node module `nodemon` (a portmanteau of "node monitor") performs a similar task to `sinatra/reloader` but goes about it slightly differently. Instead of requiring `nodemon` in our code, we use `nodemon` from the command line (demonstrated after install).
+<br>
+
+The node module `nodemon` (a portmanteau of "node monitor") performs a similar task to `sinatra/reloader` but goes about it slightly differently. Instead of requiring `nodemon` in our code, we use `nodemon` from the command line.
 
 In the terminal...
 
@@ -217,7 +222,7 @@ app.get("/:name", (req, res) => {
 
 > 20 minutes exercise. 10 minutes review.
 
-The exercise readme can be found [here](https://github.com/ga-wdi-exercises/99_bottles_express).
+The exercise can be found [here](https://github.com/ga-wdi-exercises/99_bottles_express).
 
 ## Views (20 minutes / 1:45)
 
@@ -259,7 +264,7 @@ app.get("/:numberOfBottles?", ( req, res ) => {
 })
 ```
 
-Instead of directly building a string as the response of that get request, we instead want to render a view using Handlebars.
+Instead of directly building a string as the response of that `GET` request, we instead want to render a view using Handlebars.
 The `.render` function takes two arguments...
   1. The name of the view we want to render
   2. An object with values that will be made available in the view
@@ -278,17 +283,13 @@ The only problem is our view is empty! Let's go ahead and change that now. In `v
 </html>
 ```
 
-Note the "triple-stash". This is necessary if what will be rendered in the the braces will include HTML which should not be escaped.
+Notice the `{{{body}}}` syntax. This is because Handlebars by default escapes HTML and you need the additional set of brackets to indicate that you want to render the tags in the body as HTML.
 
-This is also a great time to note how we serve static assets. Notice we linked a stylesheet in our layout file.
-
-In our `index.js`, let's also add...
+This is also a great time to note how we serve static assets. Notice we linked a stylesheet in our layout file. In our `index.js`, let's also add...
 
  `app.use(express.static(__dirname + '/public'))`
 
-This allows us to utilize files in that folder in the layout. <!-- AM: What else? -->
-
-Notice the `{{{body}}}` syntax. This is because Handlebars by default escapes HTML and you need the additional set of brackets to indicate that you want to render the tags in the body as HTML.
+This allows us to utilize files in that folder in the layout.
 
 Finally we should update our index view to reflect the same strings we had before. In `views/index.hbs`...
 
@@ -308,7 +309,7 @@ Finally we should update our index view to reflect the same strings we had befor
 A major distinction between JavaScript run in the browser and JavaScript run on the server is how the code is loaded into the environment.
 
 <details>
-  <summary><strong>How do we load a script in the browser</strong></summary>
+  <summary><strong>How do we load a script in the browser?</strong></summary>
 
   > We use a script tag (`<script src="/path/to/script"></script>`) in our HTML to tell the client browser to request, to load and run a script.
 
@@ -354,9 +355,7 @@ module.exports = {
   }
 }
 ```
-To use `require(...)` to import a local file rather than a node module, the string `require` is called with needs to be a path.
-
-Since the argument to require needs to be recognizable as a path, the path to a file in the same directory needs to be prefaced with a `./`.
+To use `require(...)` to import a local file rather than a node module, the string that is passed into `require` needs to be a path.
 
 ```js
 // index.js
@@ -367,6 +366,8 @@ const calculator = require("./calculator.js")
 // Use variable to call the .add() function defined in calculator.js
 calculator.add(3,4)
 ```
+
+> The path to a file in the same directory needs to be prefaced with a `./`.
 
 A practical example would be to import our route handlers from a separate file...
 
@@ -446,14 +447,11 @@ hello undefined. Oh man. To be sure let's `console.log(req.params)`.
 
 It's an empty object!
 
-Our html form information is not in `req.params`. Express is not handling information posted from an html form.  We need to install middleware in order to get form data and JSON data in a POST request for Express applications. Rails and Sinatra already include the middleware to handle this (RACK). By default Express does not, so we need to install it manually.
+Our HTML form information is not in `req.params`. That's because Express is not handling information posted from a form. We need to install middleware – code that runs in between receiving the request and responding – in order to get form or JSON data in a POST request for Express applications. Rails and Sinatra already include the middleware to handle this. Express, by default, does not, so we need to install it manually.
 
-Middleware is code that runs in between receiving the request and responding. Body-parser used to be included to Express, but they took it out.
+The middleware we will install is called **body-parser**. It used to be included to Express, but they took it out.
 
-Another very commonly used middleware is the [`cors` module](https://github.com/expressjs/cors).
-Like `body-parser`, `cors` is also maintained by the express team.
-
-Express prides itself in its minimalism. There are many [frameworks built on express](https://expressjs.com/en/resources/frameworks.html) that are opinionated and do a lot more out of the box. Express tries to stay flexible though.
+> Express prides itself in its minimalism. There are many [frameworks built on express](https://expressjs.com/en/resources/frameworks.html) that are opinionated and do a lot more out of the box. Express tries to stay flexible though.
 
 In the terminal...
 
@@ -471,13 +469,12 @@ app.use(bodyParser.json()) //handles json post requests
 app.use(bodyParser.urlencoded({ extended: true })) // handles form submissions
 ```
 
-> Only the urlencoded bodyparser middleware is necessary to get this form working.
+> Only the `urlencoded` body-parser middleware is necessary to get this form working.
 The JSON bodyparser is necessary if we want to handle AJAX requests with JSON bodies.
 
 Another thing to note is that, in Express, `req.params` holds just path params. Anything handled by the bodyParser (JSON or form bodies) will be held in `req.body`.
-If you want to get at values in a query string (ie url after a `?`), these values will be held in `req.query`
 
-So we change the final post request in index.js to...
+So we change the final post request in `index.js` to...
 
 ```js
 app.post("/", (req, res) => {
@@ -501,7 +498,7 @@ And to our view...
 
 ```html
 {{#if player_name}}
-  Hey {{player_name}}, there are
+  Hey {{player_name}}, there are {{bottles}} left on the wall.
 {{/if}}
 ```
 
