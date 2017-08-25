@@ -327,7 +327,7 @@ before. In `views/index.hbs`:
 {{/if}}
 ```
 
-> The syntax your seeing for the conditional statement is a [built-in helper from Handlebars](http://handlebarsjs.com/block_helpers.html).
+> This syntax for the conditional statement is a [built-in helper from Handlebars](http://handlebarsjs.com/block_helpers.html).
 
 ## module.exports (20/120)
 
