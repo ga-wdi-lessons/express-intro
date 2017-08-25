@@ -331,10 +331,8 @@ before. In `views/index.hbs`:
 
 ## module.exports (20/120)
 
-A major distinction between JavaScript run in the browser and JavaScript run on the server is how it the code loaded into the environment.
-
 <details>
-<summary>How do we load a script in the browser</summary>
+<summary>How have we been loading a scripts in the browser</summary>
 
 > We use a script tag (`<script src="/path/to/script"></script>`) in our HTML to tell the client browser to request, to load, and run a script
 
