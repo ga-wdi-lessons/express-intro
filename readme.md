@@ -332,9 +332,9 @@ before. In `views/index.hbs`:
 ## module.exports (20/120)
 
 <details>
-<summary>How have we been loading a scripts in the browser</summary>
+<summary>How have we been loading scripts in the browser</summary>
 
-> We use a script tag (`<script src="/path/to/script"></script>`) in our HTML to tell the client browser to request, to load, and run a script
+> Using a script tag (`<script src="/path/to/script"></script>`) in our HTML to tell the client browser to request, load, and run a script
 
 </details>
 
@@ -349,10 +349,10 @@ before. In `views/index.hbs`:
 <details>
 <summary>What does it mean to 'polute the global namespace' and how have we seen this problem in the browser?</summary>
 
-> 'Poluting the global namespace' means declaring variables in globla scope.
+> 'Poluting the global namespace' means declaring variables in global scope.
 This is undesirable because the larger an app is and the more global scope is used, the more likely we are to have a collision where some part of the app uses a global variable for one purpose and different part of the app uses a global variable with the same name for another.
 
-> In the browser, the _only_ way for different scripts to interact with one another is the global namespace.
+> In the browser, the _only_ way for different scripts to interact with one another is by way of the global namespace.
 
 > AngularJS kept track of modules internally and we wrapped all of our code in IIFEs so that the extend of polution of the global namespace was just the `angular` object.
 
