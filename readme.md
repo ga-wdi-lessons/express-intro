@@ -80,7 +80,7 @@ In the terminal:
 ```bash
 $ mkdir hello-express
 $ cd hello-express
-$ npm init -y
+$ npm init
 ```
 
 ---
@@ -115,6 +115,8 @@ $ cat package.json
 ```
 
 > The `package.json` file contains metadata about your app or module. NPM is also able to manage scripts related to the project. We won't dive into this but [more here](https://css-tricks.com/why-npm-scripts/). Most relevant to us right now is that the file includes the list of project dependencies like the Gemfile did in our Ruby projects.
+
+NOTE: use `npm init -y` to accept all defaults instead of going through the prompts.
 
 The next thing we'd like to do is install the Express node module. Unlike with bundler, instead of adding a dependency by updating a file, we instead use the `npm` command from the terminal:
 
