@@ -17,9 +17,9 @@ Let's start out by listing the things we've covered in the first three units of 
 
 - First we wrote code for the client using JavaScript for our application logic
 - Next, we moved into Ruby and wrote apps with server rendered pages with all of our logic in Ruby
-- Most recently, we wrote more complex code to be run as a Single Page App using AngularJS and supporting the client code with a Rails API
+<!-- - Most recently, we wrote more complex code to be run as a Single Page App using AngularJS and supporting the client code with a Rails API
 
-This most recent paradigm – SPA supported by a seperate API – will be the one we use going forward and is close to the "micro-service" architecture that is popular today.
+This most recent paradigm – SPA supported by a seperate API – will be the one we use going forward and is close to the "micro-service" architecture that is popular today. -->
 
 This lesson introduces two new tools: Node and Express.
 - **Node** is a JavaScript runtime environment for running JS in a server environment.
@@ -60,7 +60,8 @@ Everything we cover from here on is an extension of what we've already learned.
 We will use Node and Express to do the exact same thing we have done with Ruby and Sinatra/Rails.
 
 Writing JavaScript for the server has become very popular because it allows you to write front-end and back-end code in JavaScript.
-The MEAN stack (MongoDB, Express, Angular, Node) is a very popular all-JS tech stack.
+<!-- The MEAN stack (MongoDB, Express, Angular, Node) is a very popular all-JS tech stack. -->
+The MERN stack (MongoDB, Express, React, Node) is a very popular all-JS tech stack.
 
 The JavaScript we write today is the same JavaScript we've come to know – it's just the environment that's different. We've been writing JavaScript to be run by a browser on a client machine. Now we will write JavaScript to be run by Node on a server.
 
@@ -344,7 +345,7 @@ A major distinction between JavaScript run in the browser and JavaScript run on 
   >
   > In the browser, the only way for different scripts to interact with one another is the global namespace.
   >
-  > AngularJS kept track of modules internally and we wrapped all of our code in IIFEs so that the extend of pollution of the global namespace was just the `angular` object.
+  <!-- > AngularJS kept track of modules internally and we wrapped all of our code in IIFEs so that the extend of pollution of the global namespace was just the `angular` object. -->
 
 </details>
 
