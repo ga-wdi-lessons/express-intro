@@ -82,7 +82,7 @@ Let's jump right into creating a simple "Hello World!" Express application...
 ```bash
 $ mkdir hello-express
 $ cd hello-express
-$ npm init -y
+$ npm init
 ```
 
 **npm** stands for "Node Package Manager". npm installs and manages dependencies – called "modules" in JavaScript – for our Node application. Modules are analogous to Gems in Ruby, while npm is similar to Bundler.
@@ -116,7 +116,9 @@ Let's take a look at one of the files that was generated: `package.json`...
 
 > The `package.json` file contains metadata about your app or module. NPM is also able to manage scripts related to the project. We won't dive into this but [more here](https://css-tricks.com/why-npm-scripts/). Most relevant to us right now is that the file includes the list of project dependencies like the Gemfile did in our Ruby projects.
 
-The next thing we'd like to do is install the Express node module. Unlike with bundler, instead of adding a dependency by updating a file, we instead use the `npm` command from the terminal...
+NOTE: use `npm init -y` to accept all defaults instead of going through the prompts.
+
+The next thing we'd like to do is install the Express node module. Unlike with bundler, instead of adding a dependency by updating a file, we instead use the `npm` command from the terminal:
 
 ```bash
 $ npm install --save express
@@ -309,7 +311,7 @@ Finally we should update our index view to reflect the same strings we had befor
 {{/if}}
 ```
 
-> The syntax your seeing for the conditional statement is a [built-in helper from Handlebars](http://handlebarsjs.com/block_helpers.html).
+> This syntax for the conditional statement is a [built-in helper from Handlebars](http://handlebarsjs.com/block_helpers.html).
 
 ## `module.exports` (20 minutes / 2:05)
 
@@ -333,18 +335,14 @@ A major distinction between JavaScript run in the browser and JavaScript run on 
 
 </details>
 
-<br>
-
 <details>
-  <summary><strong>What does it mean to "pollute the global namespace" and how have we seen this problem in the browser?</strong></summary>
-  <br>
+<summary>What does it mean to 'polute the global namespace' and how have we seen this problem in the browser?</summary>
 
-  > "Polluting the global namespace" means declaring variables in a global scope.
-  >
-  > This is undesirable because the larger an app is and the more global scope is used, the more likely we are to have a collision where some part of the app uses a global variable for one purpose and different part of the app uses a global variable with the same name for another.
-  >
-  > In the browser, the only way for different scripts to interact with one another is the global namespace.
-  >
+> 'Poluting the global namespace' means declaring variables in global scope.
+This is undesirable because the larger an app is and the more global scope is used, the more likely we are to have a collision where some part of the app uses a global variable for one purpose and different part of the app uses a global variable with the same name for another.
+
+> In the browser, the _only_ way for different scripts to interact with one another is by way of the global namespace.
+
   <!-- > AngularJS kept track of modules internally and we wrapped all of our code in IIFEs so that the extend of pollution of the global namespace was just the `angular` object. -->
 
 </details>
